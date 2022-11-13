@@ -2,23 +2,19 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [universities, setUniversities] = useState([]);
   const getContacts = () => {
     fetch("http://universities.hipolabs.com/search?country=Australia")
       .then((response) => response.json())
-      .then((contactsJson) => setContacts(contactsJson));
+      .then((uniJson) => setUniversities(uniJson));
   };
 
   const removeLastEntry = () => {
-    contacts.pop();
-    setContacts(contacts);
-    console.log(contacts);
+    setUniversities(universities.slice(0, -1));
   };
 
   const addEntry = () => {
-    contacts.push(contacts[0]);
-    setContacts(contacts);
-    console.log(contacts);
+    setUniversities([...universities, universities[0]]);
   };
 
   return (
@@ -42,7 +38,7 @@ function App() {
             <th>Domain</th>
             <th>Webpage</th>
           </tr>
-          {contacts.map((val, key) => {
+          {universities.map((val, key) => {
             return (
               <tr key={key} className="Table-spacing">
                 <td>
