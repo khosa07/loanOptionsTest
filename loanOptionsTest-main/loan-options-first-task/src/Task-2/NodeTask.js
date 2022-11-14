@@ -6,23 +6,26 @@ const getData = async (category, limit) => {
       console.log(error);
     });
 
-  const sortedArrayDataByCategory = sortArray(category, data);
+  const sortedArrayDataByCategory = sortArrayByCategory(category, data);
   if (sortedArrayDataByCategory.length <= 0) {
     console.log("no results");
     return;
   }
-  const sortedAndFilteredArray = limitArray(limit, sortedArrayDataByCategory);
+  const sortedAndFilteredArray = limitArrayByNumber(
+    limit,
+    sortedArrayDataByCategory
+  );
   console.log(sortedAndFilteredArray);
 };
 
-const sortArray = (category, arrayData) => {
+const sortArrayByCategory = (category, arrayData) => {
   const sortedArrayData = arrayData.entries.filter(
     (element) => element.Category === category
   );
   return sortedArrayData;
 };
 
-const limitArray = (limit, sortedArrayDataByCategory) => {
+const limitArrayByNumber = (limit, sortedArrayDataByCategory) => {
   const filteredArray = sortedArrayDataByCategory.slice(0, limit);
   return filteredArray;
 };
