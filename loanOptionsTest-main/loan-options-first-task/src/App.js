@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function App() {
   const [universities, setUniversities] = useState([]);
@@ -33,10 +33,10 @@ function App() {
         </div>
         <table className="Table">
           <tr>
-            <th>Country</th>
-            <th>University Name</th>
-            <th>Domain</th>
-            <th>Webpage</th>
+            <th className="Table-header">Country</th>
+            <th className="Table-header">University Name</th>
+            <th className="Table-header">Domain</th>
+            <th className="Table-header">Webpage</th>
           </tr>
           {universities.map((val, key) => {
             return (
