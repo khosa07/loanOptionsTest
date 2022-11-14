@@ -35,8 +35,8 @@ function App() {
           <tr>
             <th className="Table-header">Country</th>
             <th className="Table-header">University Name</th>
-            <th className="Table-header">Domain</th>
-            <th className="Table-header">Webpage</th>
+            <th className="Table-header-Multiple-Entries">Domain</th>
+            <th className="Table-header-Multiple-Entries">Webpage</th>
           </tr>
           {universities.map((val, key) => {
             return (
@@ -45,8 +45,24 @@ function App() {
                   {val.country} ({val.alpha_two_code})
                 </td>
                 <td>{val.name}</td>
-                <td>{val.domains}</td>
-                <td>{val.web_pages}</td>
+                <td>
+                  {val.domains.map((value, key) => {
+                    return (
+                      <tr key={key}>
+                        <td className="Table-domain-spacing">{value}</td>
+                      </tr>
+                    );
+                  })}
+                </td>
+                <td>
+                  {val.web_pages.map((webPage, key) => {
+                    return (
+                      <tr key={key}>
+                        <td className="Table-domain-spacing">{webPage}</td>
+                      </tr>
+                    );
+                  })}
+                </td>
               </tr>
             );
           })}
